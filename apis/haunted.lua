@@ -114,10 +114,9 @@ local flashGui = nil
 
 function hauntedAPI:Setlighting()
     if not plr.Character then return end
-
     for _, v in ipairs(Lighting:GetChildren()) do
         if (v:IsA("Sky") or v:IsA("Atmosphere") or v:IsA("ColorCorrectionEffect")
-            or v:IsA("BloomEffect") or v:IsA("BlurEffect")) and v.Name ~= "Water" then
+            or v:IsA("BloomEffect") or v:IsA("BlurEffect")) and v.Name ~= "Water" and v.Name ~= "Stop" then
             pcall(function() v:Destroy() end)
         end
     end
@@ -166,9 +165,6 @@ function hauntedAPI:Setlighting()
     table.insert(createdLightingObjects, blur)
 
     V4("Setting Lighting")
-    do
-
-    end
 end
 
 local function applyAssetsAcrossWorld()
