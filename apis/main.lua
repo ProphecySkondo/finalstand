@@ -253,7 +253,7 @@ function mainAPI:TweenTo(targetCFrame: CFrame, tweenTime: number)
     return tween
 end
 
-function mainAPI:SpeedReset() --// take it or leave it
+function mainAPI:SpeedReset(respawntime: number) --// take it or leave it
     if not char then return end
     if not hrp then return end
 
@@ -264,7 +264,7 @@ function mainAPI:SpeedReset() --// take it or leave it
     do
         local newbody = char:Clone()
         hum.Health = 0
-        task.wait(0.3)
+        task.wait(respawntime)
         mainAPI.Output("Speed Resetting")
         hum:ChangeState(Enum.HumanoidStateType.Dead)
         char:ClearAllChildren()
