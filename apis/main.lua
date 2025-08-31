@@ -23,6 +23,7 @@ local punching = false
 local changingslots = false
 local touchfling = false
 local fuckall = false
+local charging = false
 local noSlowConnection
 local touchFlingConnection
 
@@ -129,6 +130,25 @@ function mainAPI:Punch(args: string)
         punchremote:FireServer({args}, CFrame.new())
         punching = false
     end
+end
+
+function mainAPI:Charge(args: string)
+    local inputremote = servertraits:FindFirstChild("Input")
+
+    if true and inputremote:IsA("RemoteEvent") then
+
+		if args ~= "x" or "xoff" then
+			mainAPI.SendNotif("dumb hoe")
+		end
+
+		if args == "x" then
+			charging = true
+			inputremote:FireServer({args},CFrame.new())
+		elseif args == "xoff" then
+			charging = false
+			inputremote:FireServer({args},CFrame.new())
+		end
+	end
 end
 
 function mainAPI:ChangeSlot(Slot: number)
