@@ -99,6 +99,16 @@ function mainAPI.SetNIL(path: string)
     end
 end
 
+--// chat
+
+function mainAPI.SpeakRobloxChat(message: string)
+	if typeof(message) ~= "string" or message == "" then
+		return
+	end
+
+	pcall(function() game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(message) end)
+end
+
 --// quick bs of everything
 
 function mainAPI:Punch(args: string)
@@ -411,7 +421,7 @@ end
 
 function mainAPI:Fling(targetplayer)
 	--// i skidded off a nigga, fuck off. suck my dick cock sucker
-    if not targetplayer or not targetplayer.Parent then
+	if not targetplayer or not targetplayer.Parent then
         return mainAPI.SendNotif("Error Occurred", "Invalid target", 5)
     end
 
@@ -599,6 +609,10 @@ function mainAPI:Fling(targetplayer)
     workspace.FallenPartsDestroyHeight = getgenv().FPDH
 
     return true
+end
+
+do
+	mainAPI.SpeakRobloxChat("API BY [MARTY]: buvzz on blue")
 end
 
 return mainAPI
